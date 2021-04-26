@@ -1,2 +1,1 @@
-# react-sidebar
-An react/nextjs implementation for sidebar menu
+This is a starter template for [Learn Next.js](https://nextjs.org/learn).
