@@ -1,7 +1,22 @@
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&family=Ubuntu:wght@300;400;500;700&display=swap");
 
 /* can now reference my font */
 body {
-  font-family: Ubuntu;
+  font-family: Nunito;
   margin: 0;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+body > #__next {
+  height: 100%;
+  background: linear-gradient(37deg, #2d354a, #352e36);
+}
+
+body > #__next > div {
+  display: flex;
+  height: 100%;
 }
