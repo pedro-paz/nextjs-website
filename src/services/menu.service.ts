@@ -2,8 +2,9 @@ import MenuItem from "../entities/Menu";
 import Route from "../enums/Route";
 import { FaBeer } from "react-icons/fa";
 import { MdSearch, MdAccountCircle } from "react-icons/md";
+import IMenuService from "../interfaces/IMenuService";
 
-export default class MenuService {
+export default class MenuService implements IMenuService {
   public GetMenus(): MenuItem[] {
     return [
       {

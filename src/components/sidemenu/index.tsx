@@ -1,11 +1,11 @@
 import React from "react";
-import { FaBeer } from "react-icons/fa";
 import { MenuContextProvider } from "../../contexts/menu";
-import MenuService from "../../services/menu.service";
+import { useServices } from "../../contexts/service";
 import MenuCell from "./menuCell";
 
 const SideMenu = () => {
-  const menuService = new MenuService();
+  const { menuService } = useServices();
+
   return (
     <div style={{ background: "red" }}>
       <MenuContextProvider>
