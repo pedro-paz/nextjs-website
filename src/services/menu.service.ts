@@ -9,22 +9,22 @@ export default class MenuService implements IMenuService {
       {
         Icon: FiHome,
         Name: "Inicio",
-        Url: Route.User,
+        Url: Route.Home,
       },
       {
         Icon: FiPieChart,
         Name: "Dashboard",
-        Url: Route.Colaborators,
+        Url: Route.Calendar,
       },
       {
         Icon: FiCalendar,
         Name: "Calendário",
-        Url: Route.Settings,
+        Url: Route.Dashboard,
       },
       {
         Icon: FiFolder,
         Name: "Documentos",
-        Url: Route.Products,
+        Url: Route.Documents,
       },
     ];
   }

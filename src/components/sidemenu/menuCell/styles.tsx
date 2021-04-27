@@ -5,7 +5,7 @@ interface ContainerMenuCellProps {
 }
 
 export const ContainerMenuCell = styled.div<ContainerMenuCellProps>`
-  padding: 19px 37px;
+  padding: 13px 37px;
   position: relative;
   align-items: center;
   cursor: pointer;
@@ -23,9 +23,10 @@ export const ContainerMenuCell = styled.div<ContainerMenuCellProps>`
       margin-right: 20px;
       display: inline-block;
       position: relative;
+      height: 24px;
 
       & svg {
-        font-size: 24px;
+        font-size: 22px;
         display: inline-block;
         z-index: 1;
         position: relative;
@@ -42,10 +43,10 @@ export const ContainerMenuCell = styled.div<ContainerMenuCellProps>`
     }
 
     & span {
-      font-size: 19px;
+      font-size: 17px;
       display: inline-block;
-      height: 21px;
-      line-height: 21px;
+      height: 17px;
+      line-height: 18px;
       font-weight: 600;
     }
   }

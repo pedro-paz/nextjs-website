@@ -1,8 +1,8 @@
 enum Route {
-  Products = "/products",
-  Settings = "/settings",
-  User = "/users",
-  Colaborators = "/colaborators",
+  Documents = "/documents",
+  Dashboard = "/dashboard",
+  Home = "/home",
+  Calendar = "/calendar",
 }
 
 export default Route;

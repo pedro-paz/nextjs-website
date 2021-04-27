@@ -7,7 +7,7 @@ const MenuIndicator: React.FC = () => {
   const [top, setTop] = useState(0);
 
   useEffect(() => {
-    setTop(selectedCell?.getBoundingClientRect().y + 8);
+    setTop(selectedCell?.getBoundingClientRect().y - 3);
   }, [selectedCell]);
 
   return <StyledMenuIndicator top={top} />;

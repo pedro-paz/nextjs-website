@@ -6,11 +6,11 @@ interface IStyledMenuIndicator {
 
 export const StyledMenuIndicator = styled.div<IStyledMenuIndicator>`
   position: absolute;
-  background: white;
-  right: 21px;
-  height: 31px;
+  background: #efefef;
+  right: 0;
+  height: 35px;
   width: 5px;
-  border-radius: 100px;
+  border-radius: 50px 0 0 50px;
   top: ${({ top }) => top}px;
   z-index: 0;
   box-shadow: 0 0 4px 2px #3a3a3a;
