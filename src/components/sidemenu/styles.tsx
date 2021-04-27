@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 export const ContainerSideMenu = styled.div`
-  width: 300px;
+  width: 260px;
   /* background: #1b1b1b; */
-  background: linear-gradient(45deg, black, transparent);
+  /* background: linear-gradient(45deg, black, transparent); */
+  background: #00000066;
   color: white;
   margin: 10px;
   border-radius: 17px;
