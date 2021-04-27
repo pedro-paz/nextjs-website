@@ -1,5 +1,5 @@
 import { useRouter } from "next/dist/client/router";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import MenuItem from "../../../entities/Menu";
 import { useMenu } from "../../../contexts/menu";
 import { ContainerMenuCell, ContainerSubMenu } from "./styles";
@@ -16,9 +16,10 @@ const MenuCell: React.FC<MenuItemProps> = ({
   marginLeft = 0,
 }) => {
   const router = useRouter();
-  const { menu, setMenu } = useMenu();
+  const { menu, setMenu, setSelectedCell } = useMenu();
   const [isActive, setIsActive] = useState(false);
   const [isExpanded, setIsExpanded] = useState(true);
+  const selectedCellRef = useRef<HTMLElement>(null);
 
   const onCellClicked = () => {
     if (Url) {
@@ -39,9 +40,17 @@ const MenuCell: React.FC<MenuItemProps> = ({
     setIsActive(menu === Url);
   }, [menu]);
 
+  useEffect(() => {
+    isActive && setSelectedCell(selectedCellRef.current);
+  }, [isActive]);
+
   return (
     <>
-      <ContainerMenuCell isActive={isActive} onClick={onCellClicked}>
+      <ContainerMenuCell
+        ref={selectedCellRef}
+        isActive={isActive}
+        onClick={onCellClicked}
+      >
         <main style={{ paddingLeft: `${marginLeft}px` }}>
           <section>
             <Icon />

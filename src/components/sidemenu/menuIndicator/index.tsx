@@ -3,13 +3,14 @@ import { useMenu } from "../../../contexts/menu";
 import { StyledMenuIndicator } from "./styles";
 
 const MenuIndicator: React.FC = () => {
-  const { menu } = useMenu();
+  const { selectedCell } = useMenu();
+  const [top, setTop] = useState(0);
 
   useEffect(() => {
-    console.log("mudou");
-  }, [menu]);
+    setTop(selectedCell?.getBoundingClientRect().y + 8);
+  }, [selectedCell]);
 
-  return <StyledMenuIndicator />;
+  return <StyledMenuIndicator top={top} />;
 };
 
 export default MenuIndicator;

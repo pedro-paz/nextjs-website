@@ -3,7 +3,9 @@ import Route from "../enums/Route";
 
 interface MenuHook {
   menu: Route;
+  selectedCell: HTMLElement;
   setMenu: (value: Route) => void;
+  setSelectedCell: (value: HTMLElement) => void;
 }
 
 const MenuContext = createContext<MenuHook>(null);
@@ -17,9 +19,12 @@ const useMenu = () => {
 
 export const MenuContextProvider: React.FC = ({ children }) => {
   const [menu, setMenu] = useState<Route>(null);
+  const [selectedCell, setSelectedCell] = useState<HTMLElement>(null);
 
   return (
-    <MenuContext.Provider value={{ menu, setMenu }}>
+    <MenuContext.Provider
+      value={{ menu, selectedCell, setMenu, setSelectedCell }}
+    >
       {children}
     </MenuContext.Provider>
   );
