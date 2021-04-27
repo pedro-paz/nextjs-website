@@ -45,7 +45,7 @@ const MenuCell: React.FC<MenuItemProps> = ({
   }, [isActive]);
 
   useEffect(() => {
-    // router.asPath === Url && setMenu(Url);
+    router.asPath === Url && setMenu(Url);
   }, [router.asPath]);
 
   return (
