@@ -1,12 +1,12 @@
 import React from "react";
 import { PageContainer } from "../../components/pageContainer";
 
-const UserTemplate = () => {
+const DocumentContent = () => {
   return (
     <PageContainer>
-      <header>Usuários</header>
+      <header>Documentos</header>
     </PageContainer>
   );
 };
 
-export default UserTemplate;
+export default DocumentContent;

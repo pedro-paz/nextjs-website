@@ -47,7 +47,7 @@ export const ContainerMenuCell = styled.div<ContainerMenuCellProps>`
       display: inline-block;
       height: 17px;
       line-height: 18px;
-      font-weight: 600;
+      font-weight: 700;
     }
   }
 `;

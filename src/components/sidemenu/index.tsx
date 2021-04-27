@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { MenuContextProvider } from "../../contexts/menu";
 import { useServices } from "../../contexts/service";
 import MenuCell from "./menuCell";

@@ -44,6 +44,10 @@ const MenuCell: React.FC<MenuItemProps> = ({
     isActive && setSelectedCell(selectedCellRef.current);
   }, [isActive]);
 
+  useEffect(() => {
+    // router.asPath === Url && setMenu(Url);
+  }, [router.asPath]);
+
   return (
     <>
       <ContainerMenuCell

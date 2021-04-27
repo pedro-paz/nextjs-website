@@ -14,12 +14,12 @@ export default class MenuService implements IMenuService {
       {
         Icon: FiPieChart,
         Name: "Dashboard",
-        Url: Route.Calendar,
+        Url: Route.Dashboard,
       },
       {
         Icon: FiCalendar,
         Name: "Calendário",
-        Url: Route.Dashboard,
+        Url: Route.Calendar,
       },
       {
         Icon: FiFolder,
