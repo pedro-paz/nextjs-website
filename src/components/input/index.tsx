@@ -6,11 +6,16 @@ import { StyledInput } from "./style";
 interface InputProps {
   style?: CSSProperties;
   placeholder?: string;
-  Icon?: IconType;
+  icon?: IconType;
   width?: number | string;
 }
 
-const Input: React.FC<InputProps> = ({ style, placeholder, width, Icon }) => {
+const Input: React.FC<InputProps> = ({
+  style,
+  placeholder,
+  width,
+  icon: Icon,
+}) => {
   return (
     <div style={{ position: "relative", width }}>
       <Icon
