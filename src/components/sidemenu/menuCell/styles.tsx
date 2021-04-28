@@ -35,7 +35,7 @@ export const ContainerMenuCell = styled.div<ContainerMenuCellProps>`
       & svg:last-child {
         position: absolute;
         left: 0;
-        filter: blur(1px) contrast(0.4);
+        filter: blur(6px) contrast(1);
         z-index: 0;
         transition: opacity 0.5s ease;
         opacity: ${({ isActive }) => (isActive ? 1 : 0)};

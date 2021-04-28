@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
 export const ContainerSideMenu = styled.div`
-  width: 260px;
-  /* background: #1b1b1b; */
-  /* background: linear-gradient(45deg, black, transparent); */
+  min-width: 250px;
+  width: 250px;
   background: #00000066;
   color: white;
-  margin: 10px;
+  margin: 30px 0 30px 10px;
   border-radius: 17px;
   padding: 25px 0;
   position: relative;

@@ -20,3 +20,7 @@ body > #__next > div {
   display: flex;
   height: 100%;
 }
+
+body * {
+  box-sizing: border-box;
+}
