@@ -1,6 +1,16 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Line, LineChart } from "recharts";
+import {
+  Cell,
+  Line,
+  LineChart,
+  Pie,
+  PieChart,
+  PolarAngleAxis,
+  RadialBar,
+  RadialBarChart,
+} from "recharts";
 import { Card } from "../../components/card";
+import { Circle } from "../../components/circle";
 import { PageContainer } from "../../components/pageContainer";
 import { TopBar } from "../../components/topBar";
 import { useServices } from "../../contexts/service";
@@ -56,9 +66,22 @@ const DashboardContent = () => {
         <TopBar />
 
         <header>Dashboard</header>
+
         <section>
           <Card>
-            <header>Vendas Gerais</header>
+            <header>
+              <span>Vendas Gerais</span>
+              <section>
+                <span style={{ marginRight: 20 }}>
+                  <Circle width={11} color="#db45ab" />
+                  <span style={{ marginLeft: 5 }}>Esta Semana</span>
+                </span>
+                <span>
+                  <Circle width={11} color="#6e6c7d" />
+                  <span style={{ marginLeft: 5 }}>Ult. Semana</span>
+                </span>
+              </section>
+            </header>
             <main>
               {chartDataRevenues?.length > 0 && (
                 <LineChart
@@ -66,24 +89,32 @@ const DashboardContent = () => {
                   height={300}
                   data={[...chartDataRevenues]}
                 >
-                  <Line
-                    type="monotone"
-                    dataKey="0"
-                    stroke="#8884d8"
-                    dot={false}
-                    strokeWidth={5}
-                  />
+                  <defs>
+                    <linearGradient
+                      id="colorUv"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="0%"
+                    >
+                      <stop offset="0%" stopColor="#934bea" />
+                      <stop offset="50%" stopColor="#c147c1" />
+                      <stop offset="100%" stopColor="#f64294" />
+                    </linearGradient>
+                  </defs>
+
                   <Line
                     type="monotone"
                     dataKey="1"
-                    stroke="#80D96F"
+                    stroke="#6e6c7d"
                     dot={false}
-                    strokeWidth={5}
+                    strokeDasharray={10}
+                    strokeWidth={3}
                   />
                   <Line
                     type="monotone"
-                    dataKey="2"
-                    stroke="#F29B94"
+                    dataKey="0"
+                    stroke="url(#colorUv)"
                     dot={false}
                     strokeWidth={5}
                   />
