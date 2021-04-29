@@ -1,8 +1,10 @@
 import React, { createContext, useContext } from "react";
+import IDashboardService from "../interfaces/IDashboardService";
 import IMenuService from "../interfaces/IMenuService";
 
 interface ServicesHook {
   menuService: IMenuService;
+  dashboardService: IDashboardService;
 }
 
 const ServicesContext = createContext<ServicesHook>(null);
@@ -14,12 +16,10 @@ const useServices = () => {
   return context;
 };
 
-export const ServiceProvider: React.FC<ServicesHook> = ({
-  menuService,
-  children,
-}) => {
+export const ServiceProvider: React.FC<ServicesHook> = (props) => {
+  const { children } = props;
   return (
-    <ServicesContext.Provider value={{ menuService }}>
+    <ServicesContext.Provider value={props}>
       {children}
     </ServicesContext.Provider>
   );
