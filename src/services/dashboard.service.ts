@@ -10,4 +10,13 @@ export default class DashboardService implements IDashboardService {
       }))
     );
   }
+
+  public getRevenuesByProduct(): Revenue[][] {
+    return new Array(3).fill(null).map<Revenue[]>((_x, i) =>
+      new Array(7).fill(null).map<Revenue>((_y, j) => ({
+        Id: i * 10 + j,
+        Amount: 10 + Math.random() * 20,
+      }))
+    );
+  }
 }

@@ -16,7 +16,7 @@ export const TopBar = () => {
         width="100%"
         placeholder="Buscar"
         icon={FiSearch}
-        style={{ marginRight: 30, flexGrow: 5 }}
+        style={{ marginRight: 30, flexGrow: 1 }}
       />
       <div style={{ display: "flex", alignItems: "center" }}>
         <FiBell style={{ fontSize: 22, marginRight: 10, marginLeft: 30 }} />

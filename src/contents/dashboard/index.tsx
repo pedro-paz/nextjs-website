@@ -52,28 +52,6 @@ const DashboardContent = () => {
   return (
     <StyledDashboardContent>
       <PageContainer id="dashboard-content">
-        <div style={{ display: "flex" }}>
-          <div
-            style={{ height: "10px", width: "10px", background: "red" }}
-          ></div>
-          <div
-            style={{ height: "10px", width: "10px", background: "blue" }}
-          ></div>
-          <div
-            style={{ height: "10px", width: "10px", background: "green" }}
-          ></div>
-          <div
-            style={{ height: "10px", width: "10px", background: "purple" }}
-          ></div>
-          <div
-            style={{
-              height: "10px",
-              width: "10px",
-              background: "green",
-              marginLeft: "auto",
-            }}
-          ></div>
-        </div>
         <style></style>
         <TopBar />
 

@@ -17,12 +17,11 @@ const SideMenu = () => {
         {menuService.GetMenus().map((menu, i) => (
           <MenuCell key={menu.Url || i} {...menu} />
         ))}
-        <div style={{ flexGrow: 1 }} />
 
         <Card
           style={{
             background: "linear-gradient(45deg, #ffffff0a, #2D2E3D)",
-            margin: "0px 17px -10px 17px",
+            margin: "auto 17px -10px 17px",
             padding: "20px 25px",
             maxWidth: "100%",
             width: "auto",
