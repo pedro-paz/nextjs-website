@@ -8,6 +8,7 @@ import {
 } from "react-icons/fi";
 import styled from "styled-components";
 import Input from "../input";
+import NightDayToggle from "../nightDayToggle";
 
 export const TopBar = () => {
   return (
@@ -18,8 +19,9 @@ export const TopBar = () => {
         icon={FiSearch}
         style={{ marginRight: 30, flexGrow: 1 }}
       />
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <FiBell style={{ fontSize: 22, marginRight: 10, marginLeft: 30 }} />
+      <div style={{ display: "flex", alignItems: "center", marginLeft: 15 }}>
+        <NightDayToggle />
+        <FiBell style={{ fontSize: 22, marginRight: 10, marginLeft: 15 }} />
         <FiSettings
           style={{
             fontSize: 20,

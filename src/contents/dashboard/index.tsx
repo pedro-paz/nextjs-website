@@ -12,6 +12,7 @@ import {
 } from "recharts";
 import { Card } from "../../components/card";
 import { Circle } from "../../components/circle";
+import NightDayToggle from "../../components/nightDayToggle";
 import { PageContainer } from "../../components/pageContainer";
 import SlideCards from "../../components/slideCards";
 import { TopBar } from "../../components/topBar";
@@ -117,7 +118,6 @@ const DashboardContent = () => {
   return (
     <StyledDashboardContent>
       <PageContainer id="dashboard-content">
-        <style></style>
         <TopBar />
 
         <header>Dashboard</header>
