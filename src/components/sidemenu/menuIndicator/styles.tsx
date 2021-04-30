@@ -8,6 +8,7 @@ export const StyledMenuIndicator = styled.div<IStyledMenuIndicator>`
   position: absolute;
   background: #efefef;
   right: 0;
+  top: 0;
   height: 35px;
   width: 5px;
   border-radius: 50px 0 0 50px;

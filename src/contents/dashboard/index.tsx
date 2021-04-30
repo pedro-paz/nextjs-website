@@ -8,14 +8,70 @@ import {
   PolarAngleAxis,
   RadialBar,
   RadialBarChart,
+  ResponsiveContainer,
 } from "recharts";
 import { Card } from "../../components/card";
 import { Circle } from "../../components/circle";
 import { PageContainer } from "../../components/pageContainer";
+import SlideCards from "../../components/slideCards";
 import { TopBar } from "../../components/topBar";
 import { useServices } from "../../contexts/service";
 import Revenue from "../../entities/Revenue";
 import { StyledDashboardContent } from "./styles";
+
+const style = {
+  top: "50%",
+  right: 0,
+  transform: "translate(0, -50%)",
+  lineHeight: "24px",
+};
+
+const data = [
+  {
+    name: "18-24",
+    uv: 31.47,
+    pv: 2400,
+    fill: "#8884d8",
+  },
+  {
+    name: "25-29",
+    uv: 26.69,
+    pv: 4567,
+    fill: "#83a6ed",
+  },
+  {
+    name: "30-34",
+    uv: 15.69,
+    pv: 1398,
+    fill: "#8dd1e1",
+  },
+  {
+    name: "35-39",
+    uv: 8.22,
+    pv: 9800,
+    fill: "#82ca9d",
+  },
+  {
+    name: "40-49",
+    uv: 8.63,
+    pv: 3908,
+    fill: "#a4de6c",
+  },
+  {
+    name: "50+",
+    uv: 2.63,
+    pv: 4800,
+    fill: "#d0ed57",
+  },
+  {
+    name: "unknow",
+    uv: 6.67,
+    pv: 4800,
+    fill: "#ffc658",
+  },
+];
+
+const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
 const DashboardContent = () => {
   const { dashboardService } = useServices();
@@ -31,7 +87,7 @@ const DashboardContent = () => {
       const timeout = cardIndex === 0 ? 0 : 150;
       setTimeout(() => {
         const currentCard = cards[cardIndex] as HTMLElement;
-        currentCard.style.transform = "scale(1)";
+        currentCard.style.transform = "scale(1) rotate(0)";
         currentCard.style.opacity = "1";
         cardIndex++;
         cardIndex < cards.length && animateCard();
@@ -50,7 +106,6 @@ const DashboardContent = () => {
         };
       });
     });
-
     setChartDataRevenues(result);
   }, [allRevenues]);
 
@@ -68,24 +123,32 @@ const DashboardContent = () => {
         <header>Dashboard</header>
 
         <section>
-          <Card>
+          <Card style={{ flexGrow: 1 }}>
             <header>
               <span>Vendas Gerais</span>
               <section>
                 <span style={{ marginRight: 20 }}>
-                  <Circle width={11} color="#db45ab" />
-                  <span style={{ marginLeft: 5 }}>Esta Semana</span>
+                  <Circle
+                    width={12}
+                    color="#db45ab"
+                    style={{ top: 2, position: "relative" }}
+                  />
+                  <span style={{ marginLeft: 7 }}>Esta Semana</span>
                 </span>
                 <span>
-                  <Circle width={11} color="#6e6c7d" />
-                  <span style={{ marginLeft: 5 }}>Ult. Semana</span>
+                  <Circle
+                    width={12}
+                    color="#6e6c7d"
+                    style={{ top: 2, position: "relative" }}
+                  />
+                  <span style={{ marginLeft: 7 }}>Ult. Semana</span>
                 </span>
               </section>
             </header>
             <main>
-              {chartDataRevenues?.length > 0 && (
+              {chartDataRevenues.length && (
                 <LineChart
-                  width={500}
+                  width={700}
                   height={300}
                   data={[...chartDataRevenues]}
                 >
@@ -106,14 +169,16 @@ const DashboardContent = () => {
                   <Line
                     type="monotone"
                     dataKey="1"
-                    stroke="#6e6c7d"
+                    animateNewValues
+                    stroke="#403f47"
                     dot={false}
                     strokeDasharray={10}
-                    strokeWidth={3}
+                    strokeWidth={4}
                   />
                   <Line
                     type="monotone"
                     dataKey="0"
+                    animateNewValues
                     stroke="url(#colorUv)"
                     dot={false}
                     strokeWidth={5}
@@ -122,15 +187,10 @@ const DashboardContent = () => {
               )}
             </main>
           </Card>
-          <Card>
-            <header>Visão Geral</header>
-          </Card>
-          <Card>
-            <header>Visão Geral</header>
-          </Card>
-          <Card>
-            <header>Visão Geral</header>
-          </Card>
+
+          <div style={{ position: "relative", width: 900 }}>
+            <SlideCards>Teste</SlideCards>
+          </div>
         </section>
 
         <section>
@@ -138,7 +198,7 @@ const DashboardContent = () => {
             <header>Visão Geral</header>
           </Card>
           <Card style={{ width: "30%" }}>
-            <header>Visão Geral</header>
+            <header>Lembretes</header>
           </Card>
         </section>
 

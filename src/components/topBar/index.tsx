@@ -52,8 +52,6 @@ export const TopBar = () => {
           >
             <FiUser size={20} />
           </div>
-          Pedro Paz
-          <FiChevronDown style={{ marginLeft: 10, fontSize: 21 }} />
         </span>
       </div>
     </section>
