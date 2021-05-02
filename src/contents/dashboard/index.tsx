@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
   Cell,
   Line,
@@ -76,13 +76,12 @@ const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
 const DashboardContent = () => {
   const { dashboardService } = useServices();
+  const containerRef = useRef<HTMLDivElement>();
   const [allRevenues, setAllRevenues] = useState<Revenue[][]>();
   const [chartDataRevenues, setChartDataRevenues] = useState<object[]>([]);
 
   const animateCards = useCallback(async () => {
-    const cards = document.querySelectorAll(
-      "#dashboard-content > section > div"
-    );
+    const cards = containerRef.current?.querySelectorAll("section > div");
     let cardIndex = 0;
     const animateCard = () => {
       const timeout = cardIndex === 0 ? 0 : 150;
@@ -116,98 +115,90 @@ const DashboardContent = () => {
   }, []);
 
   return (
-    <StyledDashboardContent>
-      <PageContainer id="dashboard-content">
-        <TopBar />
+    <StyledDashboardContent ref={containerRef}>
+      <header>Dashboard</header>
 
-        <header>Dashboard</header>
+      <section>
+        <Card style={{ flexGrow: 1 }}>
+          <header>
+            <span>Vendas Gerais</span>
+            <section>
+              <span style={{ marginRight: 20 }}>
+                <Circle
+                  width={12}
+                  color="#db45ab"
+                  style={{ top: 2, position: "relative" }}
+                />
+                <span style={{ marginLeft: 7 }}>Esta Semana</span>
+              </span>
+              <span>
+                <Circle
+                  width={12}
+                  color="#6e6c7d"
+                  style={{ top: 2, position: "relative" }}
+                />
+                <span style={{ marginLeft: 7 }}>Ult. Semana</span>
+              </span>
+            </section>
+          </header>
+          <main>
+            {chartDataRevenues.length && (
+              <LineChart width={700} height={300} data={[...chartDataRevenues]}>
+                <defs>
+                  <linearGradient
+                    id="colorUv"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="0%"
+                  >
+                    <stop offset="0%" stopColor="#934bea" />
+                    <stop offset="50%" stopColor="#c147c1" />
+                    <stop offset="100%" stopColor="#f64294" />
+                  </linearGradient>
+                </defs>
 
-        <section>
-          <Card style={{ flexGrow: 1 }}>
-            <header>
-              <span>Vendas Gerais</span>
-              <section>
-                <span style={{ marginRight: 20 }}>
-                  <Circle
-                    width={12}
-                    color="#db45ab"
-                    style={{ top: 2, position: "relative" }}
-                  />
-                  <span style={{ marginLeft: 7 }}>Esta Semana</span>
-                </span>
-                <span>
-                  <Circle
-                    width={12}
-                    color="#6e6c7d"
-                    style={{ top: 2, position: "relative" }}
-                  />
-                  <span style={{ marginLeft: 7 }}>Ult. Semana</span>
-                </span>
-              </section>
-            </header>
-            <main>
-              {chartDataRevenues.length && (
-                <LineChart
-                  width={700}
-                  height={300}
-                  data={[...chartDataRevenues]}
-                >
-                  <defs>
-                    <linearGradient
-                      id="colorUv"
-                      x1="0%"
-                      y1="0%"
-                      x2="100%"
-                      y2="0%"
-                    >
-                      <stop offset="0%" stopColor="#934bea" />
-                      <stop offset="50%" stopColor="#c147c1" />
-                      <stop offset="100%" stopColor="#f64294" />
-                    </linearGradient>
-                  </defs>
+                <Line
+                  type="monotone"
+                  dataKey="1"
+                  animateNewValues
+                  stroke="#403f47"
+                  dot={false}
+                  strokeDasharray={10}
+                  strokeWidth={4}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="0"
+                  animateNewValues
+                  stroke="url(#colorUv)"
+                  dot={false}
+                  strokeWidth={5}
+                />
+              </LineChart>
+            )}
+          </main>
+        </Card>
 
-                  <Line
-                    type="monotone"
-                    dataKey="1"
-                    animateNewValues
-                    stroke="#403f47"
-                    dot={false}
-                    strokeDasharray={10}
-                    strokeWidth={4}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="0"
-                    animateNewValues
-                    stroke="url(#colorUv)"
-                    dot={false}
-                    strokeWidth={5}
-                  />
-                </LineChart>
-              )}
-            </main>
-          </Card>
+        <div style={{ position: "relative", width: 900 }}>
+          <SlideCards>Teste</SlideCards>
+        </div>
+      </section>
 
-          <div style={{ position: "relative", width: 900 }}>
-            <SlideCards>Teste</SlideCards>
-          </div>
-        </section>
+      <section>
+        <Card style={{ width: "70%" }}>
+          <header>Visão Geral</header>
+        </Card>
+        <Card style={{ width: "30%" }}>
+          <header>Lembretes</header>
+        </Card>
+      </section>
 
-        <section>
-          <Card style={{ width: "70%" }}>
-            <header>Visão Geral</header>
-          </Card>
-          <Card style={{ width: "30%" }}>
-            <header>Lembretes</header>
-          </Card>
-        </section>
-
-        <section>
-          <Card>
-            <header>Visão Geral</header>
-          </Card>
-        </section>
-      </PageContainer>
+      <section>
+        <Card>
+          <header>Visão Geral</header>
+        </Card>
+      </section>
     </StyledDashboardContent>
   );
 };

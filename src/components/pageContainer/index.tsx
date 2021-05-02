@@ -11,7 +11,7 @@ export const PageContainer = styled.div`
     line-height: 35px;
   }
   padding: 33px 55px;
-  color: #e2e2e2;
+  color: ${({ theme }) => theme.fontColor};
 
   & > section {
     display: flex;

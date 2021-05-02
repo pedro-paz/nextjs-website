@@ -2,9 +2,8 @@ import styled from "styled-components";
 
 export const StyledLoggedTemplate = styled.div`
   display: flex;
-  background: ${({ theme }) => theme.background};
+
   & > section {
-    background: linear-gradient(to right, blue, green);
     position: fixed;
     top: 0;
     bottom: 0;

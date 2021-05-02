@@ -3,12 +3,7 @@ import { PageContainer } from "../../components/pageContainer";
 import { TopBar } from "../../components/topBar";
 
 const HomeContent = () => {
-  return (
-    <PageContainer>
-      <TopBar />
-      <header>Inicio</header>
-    </PageContainer>
-  );
+  return <header>Inicio</header>;
 };
 
 export default HomeContent;

@@ -21,25 +21,34 @@ interface ThemeProviderProps {
 
 const ThemeContextProvider: React.FC<ThemeProviderProps> = (props) => {
   const { children, initialTheme } = props;
-  const backgroundRef = useRef<HTMLDivElement>(null);
+  const themeContainerRef = useRef<HTMLDivElement>(null);
+
   const [theme, setTheme] = useState(initialTheme);
   const [currentTheme, setCurrentTheme] = useState(initialTheme);
 
   useEffect(() => {
-    backgroundRef.current.style.visibility = "visible";
-    backgroundRef.current.style.clipPath = "circle(100%)";
-    backgroundRef.current.style.background = theme.background;
+    const themeAnimation = document.createElement("div");
+    themeAnimation.classList.add("theme-animation");
+    themeAnimation.style.background = theme.background;
+    themeContainerRef.current.append(themeAnimation);
     setTimeout(() => {
-      backgroundRef.current.style.clipPath = "circle(0%)";
-      backgroundRef.current.style.visibility = "hidden";
-      setCurrentTheme(theme);
-    }, 1000);
+      themeAnimation.style.clipPath = "circle(100%)";
+      setTimeout(() => setCurrentTheme(theme), 200);
+    }, 100);
   }, [theme]);
 
   return (
     <ThemeProvider theme={currentTheme}>
       <ThemeContext.Provider value={{ theme: currentTheme, setTheme }}>
-        <div ref={backgroundRef} className="theme-animation" />
+        <div ref={themeContainerRef} style={{ position: "absolute" }}>
+          <div
+            className="theme-animation"
+            style={{
+              clipPath: "circle(100%)",
+              background: currentTheme.background,
+            }}
+          />
+        </div>
         {children}
       </ThemeContext.Provider>
     </ThemeProvider>

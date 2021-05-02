@@ -4,10 +4,9 @@ import { TopBar } from "../../components/topBar";
 
 const CalendarContent = () => {
   return (
-    <PageContainer>
-      <TopBar />
+    <div>
       <header>Calendário</header>
-    </PageContainer>
+    </div>
   );
 };
 
