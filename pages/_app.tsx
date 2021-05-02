@@ -1,13 +1,15 @@
 import { AppProps } from "next/app";
 import LoggedTemplate from "../src/templates/logged";
-import "../public/style/main.css";
 import { ThemeProvider } from "styled-components";
-import { darkTheme } from "../src/themes/DarkTheme";
+import { darkTheme } from "../src/styles/themes/dark";
+import GlobalStyle from "../src/styles/global";
+import "../public/style/main.css";
 import React from "react";
 
 function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={darkTheme}>
+      <GlobalStyle />
       <LoggedTemplate>
         <Component {...pageProps} />
       </LoggedTemplate>

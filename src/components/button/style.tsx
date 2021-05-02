@@ -13,6 +13,7 @@ export const StyledButton = styled.button`
   cursor: pointer;
   transition: 0.2s ease all;
   letter-spacing: 0.6px;
+
   &:hover {
     background: #4f2488;
   }
