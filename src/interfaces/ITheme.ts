@@ -9,6 +9,7 @@ interface ITheme {
   fontColor: string;
   card: ThemedElement;
   input: ThemedElement;
+  sideMenu: ThemedElement;
 }
 
 export default ITheme;

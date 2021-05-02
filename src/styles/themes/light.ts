@@ -12,4 +12,9 @@ export const lightTheme: ITheme = {
     color: "black",
     boxShadow: "2px 2px 5px 0px #a0a0a073",
   },
+  sideMenu: {
+    boxShadow: "2px 2px 5px 0px #a0a0a073",
+    background: "white",
+    color: "black",
+  },
 };

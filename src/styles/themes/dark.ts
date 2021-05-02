@@ -12,4 +12,9 @@ export const darkTheme: ITheme = {
     boxShadow: "0 0 40px 3px #00000073",
     background: "#00000087",
   },
+  sideMenu: {
+    boxShadow: "0 0 40px 3px #00000073",
+    background: "#00000066",
+    color: "white",
+  },
 };
