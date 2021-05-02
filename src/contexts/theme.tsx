@@ -33,7 +33,7 @@ const ThemeContextProvider: React.FC<ThemeProviderProps> = (props) => {
     themeContainerRef.current.append(themeAnimation);
     setTimeout(() => {
       themeAnimation.style.clipPath = "circle(100%)";
-      setTimeout(() => setCurrentTheme(theme), 200);
+      setTimeout(() => setCurrentTheme(theme), 150);
     }, 100);
   }, [theme]);
 
