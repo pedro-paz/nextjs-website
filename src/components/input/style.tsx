@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const StyledInput = styled.input`
-  color: #dbdbdb;
   border: none;
   font-family: Nunito;
   font-weight: 500;
@@ -9,6 +8,8 @@ export const StyledInput = styled.input`
   padding: 10px;
   border-radius: 10px;
   outline: none;
-  box-shadow: 0 0 40px 3px #00000073;
-  background: #00000087;
+  color: ${({ theme }) => theme.input.color};
+  box-shadow: ${({ theme }) => theme.input.boxShadow};
+  background: ${({ theme }) => theme.input.background};
+  transition: 0.5s ease all;
 `;

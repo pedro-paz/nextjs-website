@@ -8,6 +8,5 @@ export const StyledDashboardContent = styled.div`
     width: 100%;
     transform: scale(0.75);
     opacity: 0;
-    transition: transform 1s ease, opacity 1s ease;
   }
 `;

@@ -1,5 +1,6 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import ITheme from "../interfaces/ITheme";
+import { ThemeProvider } from "styled-components";
 
 interface ThemeHook {
   theme: ITheme;
@@ -8,20 +9,41 @@ interface ThemeHook {
 
 const ThemeContext = createContext<ThemeHook>(null);
 
-const useThemes = () => {
+const useTheme = () => {
   const context = useContext<ThemeHook>(ThemeContext);
   if (!context) throw new Error("useThemes must be use within a ThemeProvider");
   return context;
 };
 
-const ThemeProvider: React.FC<ThemeHook> = (props) => {
-  const { children } = props;
-  const [theme, setTheme] = useState(props.theme);
+interface ThemeProviderProps {
+  initialTheme: ITheme;
+}
+
+const ThemeContextProvider: React.FC<ThemeProviderProps> = (props) => {
+  const { children, initialTheme } = props;
+  const backgroundRef = useRef<HTMLDivElement>(null);
+  const [theme, setTheme] = useState(initialTheme);
+  const [currentTheme, setCurrentTheme] = useState(initialTheme);
+
+  useEffect(() => {
+    backgroundRef.current.style.visibility = "visible";
+    backgroundRef.current.style.clipPath = "circle(100%)";
+    backgroundRef.current.style.background = theme.background;
+    setTimeout(() => {
+      backgroundRef.current.style.clipPath = "circle(0%)";
+      backgroundRef.current.style.visibility = "hidden";
+      setCurrentTheme(theme);
+    }, 1000);
+  }, [theme]);
+
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeProvider theme={currentTheme}>
+      <ThemeContext.Provider value={{ theme: currentTheme, setTheme }}>
+        <div ref={backgroundRef} className="theme-animation" />
+        {children}
+      </ThemeContext.Provider>
+    </ThemeProvider>
   );
 };
 
-export { ThemeProvider, useThemes };
+export { ThemeContextProvider, useTheme };

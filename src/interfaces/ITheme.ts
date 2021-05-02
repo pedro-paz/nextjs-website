@@ -1,8 +1,14 @@
+interface ThemedElement {
+  background?: string;
+  boxShadow?: string;
+  color?: string;
+}
+
 interface ITheme {
-  title: string;
   background: string;
   fontColor: string;
-  borderColor: string;
+  card: ThemedElement;
+  input: ThemedElement;
 }
 
 export default ITheme;
