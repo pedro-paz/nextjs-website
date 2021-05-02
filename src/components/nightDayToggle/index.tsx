@@ -6,6 +6,7 @@ import { Circle } from "../circle";
 const NightDayToggle = () => {
   const containerRef = useRef<HTMLDivElement>();
   const [background, setBackground] = useState<HTMLElement>();
+
   const onToggleClicked = () => {
     containerRef.current.classList.toggle("toggle-container-day");
 

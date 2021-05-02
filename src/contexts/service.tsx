@@ -16,7 +16,7 @@ const useServices = () => {
   return context;
 };
 
-export const ServiceProvider: React.FC<ServicesHook> = (props) => {
+const ServiceProvider: React.FC<ServicesHook> = (props) => {
   const { children } = props;
   return (
     <ServicesContext.Provider value={props}>
@@ -25,4 +25,4 @@ export const ServiceProvider: React.FC<ServicesHook> = (props) => {
   );
 };
 
-export { ServicesContext, useServices };
+export { ServiceProvider, useServices };

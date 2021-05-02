@@ -6,11 +6,12 @@ import {
   FiSettings,
   FiUser,
 } from "react-icons/fi";
-import styled from "styled-components";
+import { useThemes } from "../../contexts/theme";
 import Input from "../input";
 import NightDayToggle from "../nightDayToggle";
 
 export const TopBar = () => {
+  const { theme, setTheme } = useThemes();
   return (
     <section style={{ display: "flex", marginBottom: 30 }}>
       <Input

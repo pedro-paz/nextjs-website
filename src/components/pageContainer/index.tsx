@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const PageContainer = styled.div`
   width: 100%;
   flex-grow: 1;
+
   & > header {
     font-weight: 800;
     font-size: 38px;
