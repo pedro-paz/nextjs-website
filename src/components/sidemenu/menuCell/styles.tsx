@@ -9,7 +9,10 @@ export const ContainerMenuCell = styled.div<ContainerMenuCellProps>`
   position: relative;
   align-items: center;
   cursor: pointer;
-  color: ${({ isActive }) => (isActive ? "#fafafa" : "#79839c")};
+  color: ${({ isActive, theme }) =>
+    isActive
+      ? theme.sideMenu.selectedCell.color
+      : theme.sideMenu.notSelectedCell.color};
   transition: color 0.2s ease;
   z-index: 1;
   position: relative;

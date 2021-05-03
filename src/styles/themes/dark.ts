@@ -16,5 +16,15 @@ export const darkTheme: ITheme = {
     boxShadow: "0 0 40px 3px #00000073",
     background: "#00000066",
     color: "white",
+    selectedCell: {
+      color: "#fafafa",
+    },
+    notSelectedCell: {
+      color: "#79839c",
+    },
+    cellIndicator: {
+      background: "#efefef",
+      boxShadow: "0 0 4px 2px #3a3a3a",
+    },
   },
 };
