@@ -6,6 +6,7 @@ export const darkTheme: ITheme = {
   card: {
     boxShadow: "0 0 40px 3px #00000073;",
     background: "#0000006b",
+    solidBackground: "#1d1c23",
   },
   input: {
     color: "#dbdbdb",

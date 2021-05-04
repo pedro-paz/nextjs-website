@@ -1,21 +1,9 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import {
-  Cell,
-  Line,
-  LineChart,
-  Pie,
-  PieChart,
-  PolarAngleAxis,
-  RadialBar,
-  RadialBarChart,
-  ResponsiveContainer,
-} from "recharts";
+import { Line, LineChart } from "recharts";
 import { Card } from "../../components/card";
 import { Circle } from "../../components/circle";
-import NightDayToggle from "../../components/nightDayToggle";
-import { PageContainer } from "../../components/pageContainer";
+import { PageHeader } from "../../components/pageHeader.tsx";
 import SlideCards from "../../components/slideCards";
-import { TopBar } from "../../components/topBar";
 import { useServices } from "../../contexts/service";
 import Revenue from "../../entities/Revenue";
 import { StyledDashboardContent } from "./styles";
@@ -72,11 +60,10 @@ const data = [
   },
 ];
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
-
 const DashboardContent = () => {
   const { dashboardService } = useServices();
   const containerRef = useRef<HTMLDivElement>();
+  const dashboardContainerRef = useRef<HTMLElement>();
   const [allRevenues, setAllRevenues] = useState<Revenue[][]>();
   const [chartDataRevenues, setChartDataRevenues] = useState<object[]>([]);
 
@@ -116,7 +103,7 @@ const DashboardContent = () => {
 
   return (
     <StyledDashboardContent ref={containerRef}>
-      <header>Dashboard</header>
+      <PageHeader>Dashboard</PageHeader>
 
       <section>
         <Card style={{ flexGrow: 1 }}>
@@ -141,9 +128,13 @@ const DashboardContent = () => {
               </span>
             </section>
           </header>
-          <main>
+          <main ref={dashboardContainerRef}>
             {chartDataRevenues.length && (
-              <LineChart width={700} height={300} data={[...chartDataRevenues]}>
+              <LineChart
+                width={dashboardContainerRef.current?.clientWidth}
+                height={300}
+                data={[...chartDataRevenues]}
+              >
                 <defs>
                   <linearGradient
                     id="colorUv"
@@ -181,7 +172,7 @@ const DashboardContent = () => {
         </Card>
 
         <div style={{ position: "relative", width: 900 }}>
-          <SlideCards>Teste</SlideCards>
+          <SlideCards />
         </div>
       </section>
 

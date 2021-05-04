@@ -1,11 +1,12 @@
 import React from "react";
 import { PageContainer } from "../../components/pageContainer";
+import { PageHeader } from "../../components/pageHeader.tsx";
 import { TopBar } from "../../components/topBar";
 
 const CalendarContent = () => {
   return (
     <div>
-      <header>Calendário</header>
+      <PageHeader>Calendário</PageHeader>
     </div>
   );
 };

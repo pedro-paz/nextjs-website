@@ -1,4 +1,5 @@
 import React, { CSSProperties, useEffect, useRef } from "react";
+import { Card } from "../card";
 import { StyledStyleCards } from "./style";
 
 interface SlideCardsProps {
@@ -20,11 +21,11 @@ const SlideCards: React.FC<SlideCardsProps> = ({ children, style }) => {
 
   return (
     <StyledStyleCards ref={containerRef}>
-      <div className="card card-decorator" style={{ background: "blue" }} />
-      <div className="card card-decorator" style={{ background: "red" }} />
-      <div className="card" style={{ background: "green", ...style }}>
+      <Card className="card card-decorator" />
+      <Card className="card card-decorator" />
+      <Card className="card" style={{ style }}>
         {children}
-      </div>
+      </Card>
     </StyledStyleCards>
   );
 };

@@ -4,11 +4,14 @@ export const StyledStyleCards = styled.div`
   position: relative;
   height: 100%;
   & .card {
-    width: 300px;
+    width: 300px !important;
     border-radius: 30px;
     height: 100%;
     position: relative;
-    transition: all 2s ease;
+    transition: background-color 0.1s ease, transform 2s ease, height 2s ease,
+      left 2s ease !important;
+    background: ${({ theme }) => theme.card.solidBackground};
+    opacity: 1 !important;
   }
 
   & .card-decorator {

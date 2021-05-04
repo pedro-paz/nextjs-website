@@ -6,6 +6,7 @@ export const lightTheme: ITheme = {
   card: {
     boxShadow: "2px 2px 44px 0px #a0a0a073",
     background: "transparent",
+    solidBackground: "#ebebf5",
   },
   input: {
     background: "#ffffff3b",

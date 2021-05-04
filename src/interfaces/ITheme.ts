@@ -13,10 +13,14 @@ interface ThemedSideMenu {
   cellIndicator: ThemedElement;
 }
 
+interface ThemeCard extends ThemedElement {
+  solidBackground;
+}
+
 interface ITheme {
   background: string;
   fontColor: string;
-  card: ThemedElement;
+  card: ThemeCard;
   input: ThemedElement;
   sideMenu: ThemedSideMenu;
 }
