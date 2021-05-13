@@ -5,7 +5,7 @@ export const StyledStyleCards = styled.div`
   height: 100%;
   & .card {
     width: 300px !important;
-    border-radius: 30px;
+    border-radius: 12px;
     height: 100%;
     position: relative;
     transition: background-color 0.1s ease, transform 2s ease, height 2s ease,

@@ -1,67 +1,19 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import { FiBarChart, FiBarChart2, FiPieChart } from "react-icons/fi";
 import { Line, LineChart } from "recharts";
 import { Card } from "../../components/card";
 import { Circle } from "../../components/circle";
+import GaugeChart from "../../components/gaugeChart";
 import { PageHeader } from "../../components/pageHeader.tsx";
 import SlideCards from "../../components/slideCards";
 import { useServices } from "../../contexts/service";
+import { useTheme } from "../../contexts/theme";
 import Revenue from "../../entities/Revenue";
 import { StyledDashboardContent } from "./styles";
 
-const style = {
-  top: "50%",
-  right: 0,
-  transform: "translate(0, -50%)",
-  lineHeight: "24px",
-};
-
-const data = [
-  {
-    name: "18-24",
-    uv: 31.47,
-    pv: 2400,
-    fill: "#8884d8",
-  },
-  {
-    name: "25-29",
-    uv: 26.69,
-    pv: 4567,
-    fill: "#83a6ed",
-  },
-  {
-    name: "30-34",
-    uv: 15.69,
-    pv: 1398,
-    fill: "#8dd1e1",
-  },
-  {
-    name: "35-39",
-    uv: 8.22,
-    pv: 9800,
-    fill: "#82ca9d",
-  },
-  {
-    name: "40-49",
-    uv: 8.63,
-    pv: 3908,
-    fill: "#a4de6c",
-  },
-  {
-    name: "50+",
-    uv: 2.63,
-    pv: 4800,
-    fill: "#d0ed57",
-  },
-  {
-    name: "unknow",
-    uv: 6.67,
-    pv: 4800,
-    fill: "#ffc658",
-  },
-];
-
 const DashboardContent = () => {
   const { dashboardService } = useServices();
+  const { theme } = useTheme();
   const containerRef = useRef<HTMLDivElement>();
   const dashboardContainerRef = useRef<HTMLElement>();
   const [allRevenues, setAllRevenues] = useState<Revenue[][]>();
@@ -113,7 +65,7 @@ const DashboardContent = () => {
               <span style={{ marginRight: 20 }}>
                 <Circle
                   width={12}
-                  color="#db45ab"
+                  color={theme.gradient[2]}
                   style={{ top: 2, position: "relative" }}
                 />
                 <span style={{ marginLeft: 7 }}>Esta Semana</span>
@@ -121,7 +73,7 @@ const DashboardContent = () => {
               <span>
                 <Circle
                   width={12}
-                  color="#6e6c7d"
+                  color={theme.lightColor}
                   style={{ top: 2, position: "relative" }}
                 />
                 <span style={{ marginLeft: 7 }}>Ult. Semana</span>
@@ -143,9 +95,9 @@ const DashboardContent = () => {
                     x2="100%"
                     y2="0%"
                   >
-                    <stop offset="0%" stopColor="#934bea" />
-                    <stop offset="50%" stopColor="#c147c1" />
-                    <stop offset="100%" stopColor="#f64294" />
+                    <stop offset="0%" stopColor={theme.gradient[0]} />
+                    <stop offset="50%" stopColor={theme.gradient[1]} />
+                    <stop offset="100%" stopColor={theme.gradient[2]} />
                   </linearGradient>
                 </defs>
 
@@ -153,7 +105,7 @@ const DashboardContent = () => {
                   type="monotone"
                   dataKey="1"
                   animateNewValues
-                  stroke="#403f47"
+                  stroke={theme.lightColor}
                   dot={false}
                   strokeDasharray={10}
                   strokeWidth={4}
@@ -171,8 +123,18 @@ const DashboardContent = () => {
           </main>
         </Card>
 
-        <div style={{ position: "relative", width: 900 }}>
-          <SlideCards />
+        <div style={{ position: "relative" }}>
+          <SlideCards>
+            <GaugeChart
+              percent={50}
+              width={200}
+              stroke={3}
+              style={{ margin: "30px auto 0 auto" }}
+            >
+              <FiBarChart2 color={theme.gradient[2]} size={70} />
+            </GaugeChart>
+            Total Ganho 50%
+          </SlideCards>
         </div>
       </section>
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   FiBell,
   FiChevronDown,
@@ -6,10 +6,14 @@ import {
   FiSettings,
   FiUser,
 } from "react-icons/fi";
+import { ThemeContextProvider, useTheme } from "../../contexts/theme";
+import ITheme from "../../interfaces/ITheme";
 import Input from "../input";
 import NightDayToggle from "../nightDayToggle";
 
 export const TopBar = () => {
+  const { theme } = useTheme();
+
   return (
     <section style={{ display: "flex", marginBottom: 30 }}>
       <Input
@@ -41,7 +45,9 @@ export const TopBar = () => {
         >
           <div
             style={{
-              background: "black",
+              background: theme.card.background,
+              boxShadow: theme.boxShadow,
+              color: theme.fontColor,
               justifyContent: "center",
               alignItems: "center",
               marginRight: 10,

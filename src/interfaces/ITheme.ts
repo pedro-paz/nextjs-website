@@ -18,8 +18,12 @@ interface ThemeCard extends ThemedElement {
 }
 
 interface ITheme {
+  gradient: string[];
   background: string;
+  lightColor: string;
+  darkColor: string;
   fontColor: string;
+  boxShadow: string;
   card: ThemeCard;
   input: ThemedElement;
   sideMenu: ThemedSideMenu;
