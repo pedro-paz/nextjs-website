@@ -2,15 +2,23 @@ import ITheme from "../../interfaces/ITheme";
 
 export const lightTheme: ITheme = {
   background: "#ebebf5",
-  fontColor: "#676767",
+  fontColor: "#5a5a5a",
   gradient: ["#c2c8ee", "#98a3e9", "#7080e2"],
   boxShadow: "2px 2px 44px 0px #a0a0a073",
-  lightColor: "#dfdfe9",
+  lightColor: "#0000001a",
   darkColor: "#0000000d",
+  mutedColor: "#acabad",
+  ghostButton: {
+    background: "#b9b9b9",
+  },
+  button: {
+    boxShadow: "rgb(127 127 127 / 45%) 0px 1px 3px 0px",
+  },
   card: {
-    boxShadow: "2px 2px 44px 0px #a0a0a073",
-    background: "transparent",
-    solidBackground: "#ebebf5",
+    // boxShadow: "2px 2px 44px 0px #a0a0a073",
+    boxShadow: "2px 2px 4px 0px #a0a0a073",
+    background: "#ffffff40",
+    solidBackground: "#f0f0f8",
   },
   input: {
     background: "#ffffff3b",
@@ -18,7 +26,8 @@ export const lightTheme: ITheme = {
     boxShadow: "2px 2px 5px 0px #a0a0a073",
   },
   sideMenu: {
-    boxShadow: "2px 2px 44px 0px #a0a0a073",
+    // boxShadow: "2px 2px 44px 0px #a0a0a073",
+    boxShadow: "2px 2px 8px 0px #a0a0a073",
     background: "#ffffff40",
     color: "black",
     selectedCell: {

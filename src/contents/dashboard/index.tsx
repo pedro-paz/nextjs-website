@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { FiBarChart, FiBarChart2, FiPieChart } from "react-icons/fi";
+import { FiBarChart2, FiInfo, FiPieChart } from "react-icons/fi";
 import { Line, LineChart } from "recharts";
+import { GhostButton } from "../../components/button";
 import { Card } from "../../components/card";
 import { Circle } from "../../components/circle";
 import GaugeChart from "../../components/gaugeChart";
@@ -18,22 +19,7 @@ const DashboardContent = () => {
   const dashboardContainerRef = useRef<HTMLElement>();
   const [allRevenues, setAllRevenues] = useState<Revenue[][]>();
   const [chartDataRevenues, setChartDataRevenues] = useState<object[]>([]);
-
-  const animateCards = useCallback(async () => {
-    const cards = containerRef.current?.querySelectorAll("section > div");
-    let cardIndex = 0;
-    const animateCard = () => {
-      const timeout = cardIndex === 0 ? 0 : 150;
-      setTimeout(() => {
-        const currentCard = cards[cardIndex] as HTMLElement;
-        currentCard.style.transform = "scale(1) rotate(0)";
-        currentCard.style.opacity = "1";
-        cardIndex++;
-        cardIndex < cards.length && animateCard();
-      }, timeout);
-    };
-    animateCard();
-  }, []);
+  const [goalPercentage, setGoalPercentage] = useState<number>(0);
 
   useEffect(() => {
     var result = [];
@@ -49,39 +35,40 @@ const DashboardContent = () => {
   }, [allRevenues]);
 
   useEffect(() => {
-    animateCards();
     setAllRevenues(dashboardService.getRevenues());
+    setGoalPercentage(dashboardService.getGoalPercentage());
   }, []);
 
   return (
     <StyledDashboardContent ref={containerRef}>
       <PageHeader>Dashboard</PageHeader>
 
-      <section>
+      <section style={{ height: 357 }}>
         <Card style={{ flexGrow: 1 }}>
           <header>
             <span>Vendas Gerais</span>
-            <section>
-              <span style={{ marginRight: 20 }}>
+            <section style={{ display: "flex" }}>
+              <GhostButton style={{ marginRight: 20, height: 18 }}>
                 <Circle
                   width={12}
                   color={theme.gradient[2]}
                   style={{ top: 2, position: "relative" }}
                 />
                 <span style={{ marginLeft: 7 }}>Esta Semana</span>
-              </span>
-              <span>
+              </GhostButton>
+
+              <GhostButton style={{ height: 18 }}>
                 <Circle
                   width={12}
                   color={theme.lightColor}
                   style={{ top: 2, position: "relative" }}
                 />
                 <span style={{ marginLeft: 7 }}>Ult. Semana</span>
-              </span>
+              </GhostButton>
             </section>
           </header>
           <main ref={dashboardContainerRef}>
-            {chartDataRevenues.length && (
+            {chartDataRevenues.length ? (
               <LineChart
                 width={dashboardContainerRef.current?.clientWidth}
                 height={300}
@@ -107,7 +94,6 @@ const DashboardContent = () => {
                   animateNewValues
                   stroke={theme.lightColor}
                   dot={false}
-                  strokeDasharray={10}
                   strokeWidth={4}
                 />
                 <Line
@@ -119,21 +105,31 @@ const DashboardContent = () => {
                   strokeWidth={5}
                 />
               </LineChart>
+            ) : (
+              <></>
             )}
           </main>
         </Card>
 
-        <div style={{ position: "relative" }}>
+        <div>
           <SlideCards>
+            <header>
+              Meta
+              <div>
+                <GhostButton>
+                  <FiInfo size={21} />
+                </GhostButton>
+              </div>
+            </header>
+
             <GaugeChart
-              percent={50}
-              width={200}
+              percent={goalPercentage}
+              width={220}
               stroke={3}
-              style={{ margin: "30px auto 0 auto" }}
+              style={{ margin: "0 auto 0 auto" }}
             >
               <FiBarChart2 color={theme.gradient[2]} size={70} />
             </GaugeChart>
-            Total Ganho 50%
           </SlideCards>
         </div>
       </section>

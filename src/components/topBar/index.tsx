@@ -8,6 +8,7 @@ import {
 } from "react-icons/fi";
 import { ThemeContextProvider, useTheme } from "../../contexts/theme";
 import ITheme from "../../interfaces/ITheme";
+import { GhostButton } from "../button";
 import Input from "../input";
 import NightDayToggle from "../nightDayToggle";
 
@@ -24,15 +25,17 @@ export const TopBar = () => {
       />
       <div style={{ display: "flex", alignItems: "center", marginLeft: 15 }}>
         <NightDayToggle />
-        <FiBell style={{ fontSize: 22, marginRight: 10, marginLeft: 15 }} />
-        <FiSettings
-          style={{
-            fontSize: 20,
-            position: "relative",
-            marginRight: 10,
-            marginLeft: 10,
-          }}
-        />
+        <GhostButton style={{ marginRight: 10, marginLeft: 15 }}>
+          <FiBell style={{ fontSize: 22 }} />
+        </GhostButton>
+        <GhostButton style={{ marginRight: 10, marginLeft: 10 }}>
+          <FiSettings
+            style={{
+              fontSize: 22,
+              position: "relative",
+            }}
+          />
+        </GhostButton>
         <span
           style={{
             fontSize: 16,
@@ -46,7 +49,7 @@ export const TopBar = () => {
           <div
             style={{
               background: theme.card.background,
-              boxShadow: theme.boxShadow,
+              boxShadow: theme.button.boxShadow,
               color: theme.fontColor,
               justifyContent: "center",
               alignItems: "center",

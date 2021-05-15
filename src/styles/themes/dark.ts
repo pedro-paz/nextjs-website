@@ -6,7 +6,14 @@ export const darkTheme: ITheme = {
   gradient: ["#934bea", "#c147c1", "#f64294"],
   boxShadow: "0 0 40px 3px #00000073",
   lightColor: "#ffffff0d",
-  darkColor: "#0000005c",
+  darkColor: "#434247",
+  mutedColor: "#acabad",
+  ghostButton: {
+    background: "black",
+  },
+  button: {
+    boxShadow: "0 0 40px 3px #00000073;",
+  },
   card: {
     boxShadow: "0 0 40px 3px #00000073;",
     background: "#0000006b",

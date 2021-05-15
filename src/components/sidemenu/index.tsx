@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { MenuContextProvider } from "../../contexts/menu";
 import { useServices } from "../../contexts/service";
-import Button from "../button";
+
 import { Card } from "../card";
 import MenuCell from "./menuCell";
 import MenuIndicator from "./menuIndicator";

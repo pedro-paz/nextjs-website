@@ -3,4 +3,5 @@ import Revenue from "../entities/Revenue";
 
 export default interface IDashboardService {
   getRevenues(): Revenue[][];
+  getGoalPercentage(): number;
 }

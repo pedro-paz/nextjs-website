@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import MenuItem from "../../../entities/Menu";
 import { useMenu } from "../../../contexts/menu";
 import { ContainerMenuCell, ContainerSubMenu } from "./styles";
+import { GhostButton } from "../../button";
 
 interface MenuItemProps extends MenuItem {
   marginLeft?: number;

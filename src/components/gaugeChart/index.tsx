@@ -21,7 +21,7 @@ const GaugeChart: React.FC<GaugeChartProps> = ({
 
   useEffect(() => {
     setProgress(percent);
-  }, [progress]);
+  }, [percent]);
 
   return (
     <StyledGaugeChart

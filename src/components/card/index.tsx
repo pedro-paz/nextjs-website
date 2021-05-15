@@ -14,7 +14,13 @@ export const Card = styled.div`
     margin: 15px 0px;
     font-weight: 700;
     font-size: 20px;
+    width: 100%;
     display: flex;
+
+    & > *:last-child {
+      margin-left: auto;
+      margin-top: 2px;
+    }
     & section {
       color: #bcbcbc;
       margin-top: 3px;

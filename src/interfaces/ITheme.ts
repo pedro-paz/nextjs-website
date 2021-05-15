@@ -22,11 +22,14 @@ interface ITheme {
   background: string;
   lightColor: string;
   darkColor: string;
+  mutedColor: string;
   fontColor: string;
   boxShadow: string;
   card: ThemeCard;
   input: ThemedElement;
   sideMenu: ThemedSideMenu;
+  button: ThemedElement;
+  ghostButton: ThemedElement;
 }
 
 export default ITheme;
