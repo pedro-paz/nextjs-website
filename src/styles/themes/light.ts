@@ -15,7 +15,6 @@ export const lightTheme: ITheme = {
     boxShadow: "rgb(127 127 127 / 45%) 0px 1px 3px 0px",
   },
   card: {
-    // boxShadow: "2px 2px 44px 0px #a0a0a073",
     boxShadow: "2px 2px 4px 0px #a0a0a073",
     background: "#ffffff40",
     solidBackground: "#f0f0f8",
@@ -26,7 +25,6 @@ export const lightTheme: ITheme = {
     boxShadow: "2px 2px 5px 0px #a0a0a073",
   },
   sideMenu: {
-    // boxShadow: "2px 2px 44px 0px #a0a0a073",
     boxShadow: "2px 2px 8px 0px #a0a0a073",
     background: "#ffffff40",
     color: "black",
