@@ -17,7 +17,7 @@ const NightDayToggle = () => {
   }, [isLight]);
 
   return (
-    <div style={{ position: "relative", width: 49, height: 24 }}>
+    <div style={{ position: "relative", width: 44, height: 24 }}>
       <StyledNightDayToggle
         className={`${isLight && "toggle-container-day"} toggle-container`}
         onClick={onToggleClicked}
