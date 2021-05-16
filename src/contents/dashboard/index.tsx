@@ -21,12 +21,15 @@ import { Card } from "../../components/card";
 import { Circle } from "../../components/circle";
 import GaugeChart from "../../components/gaugeChart";
 import { PageHeader } from "../../components/pageHeader.tsx";
+import ProgressBar from "../../components/progressBar";
 import SlideCards from "../../components/slideCards";
 import { Table } from "../../components/table";
 import { StyledTable } from "../../components/table/styles";
 import { useServices } from "../../contexts/service";
 import { useTheme } from "../../contexts/theme";
 import Revenue from "../../entities/Revenue";
+import Seller from "../../entities/Seller";
+import { formatMoney } from "../../utils/fn";
 import { StyledDashboardContent } from "./styles";
 
 const data = [
@@ -83,6 +86,7 @@ const DashboardContent = () => {
   const [allRevenues, setAllRevenues] = useState<Revenue[][]>();
   const [chartDataRevenues, setChartDataRevenues] = useState<object[]>([]);
   const [goalPercentage, setGoalPercentage] = useState<number>(0);
+  const [sellers, setSellers] = useState<Seller[]>();
 
   useEffect(() => {
     var result = [];
@@ -100,6 +104,7 @@ const DashboardContent = () => {
   useEffect(() => {
     setAllRevenues(dashboardService.getRevenues());
     setGoalPercentage(dashboardService.getGoalPercentage());
+    setSellers(dashboardService.getSellers());
   }, []);
 
   return (
@@ -230,52 +235,26 @@ const DashboardContent = () => {
             </BarChart>
           </main>
         </Card>
-        <Table style={{ width: "60%" }}>
-          <li className="table-header">
-            <div>
-              <div>Id</div>
-              <div>Vendedor</div>
-              <div>Valor</div>
-              <div>Status</div>
-            </div>
-          </li>
-          <li className="table-row">
-            <div>
-              <div>42235</div>
-              <div>Pedro Paz</div>
-              <div>R$ 350,00</div>
-              <div>Pendente</div>
-            </div>
-          </li>
-          <li className="table-row">
-            <div>
-              <div>42442</div>
-              <div>Gustavo Farias</div>
-              <div>R$ 220,00</div>
-              <div>Pendente</div>
-            </div>
-          </li>
-          <li className="table-row">
-            <div>
-              <div>42257</div>
-              <div>João Roberto</div>
-              <div>R$ 345,00</div>
-              <div>Pendente</div>
-            </div>
-          </li>
-          <li className="table-row">
-            <div>
-              <div>42311</div>
-              <div>Janete Regina</div>
-              <div>R$ 115,00</div>
-              <div>Pendente</div>
-            </div>
-          </li>
-        </Table>
-
-        {/* <Card style={{ width: "40%" }}>
-          <header>Visão Geral</header>
-        </Card> */}
+        <Table
+          style={{ width: "60%" }}
+          data={sellers}
+          columns={[
+            { propName: "Id" },
+            { propName: "Name", header: "Vendedor" },
+            {
+              header: "Meta",
+              resolveWith: (row) => (
+                <ProgressBar
+                  style={{ marginTop: 10, width: "70%", height: 7 }}
+                  percent={row.Goal}
+                />
+              ),
+            },
+            {
+              propName: "Status",
+            },
+          ]}
+        />
       </section>
     </StyledDashboardContent>
   );

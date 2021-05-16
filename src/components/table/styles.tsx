@@ -9,8 +9,7 @@ export const StyledTable = styled.table`
     opacity: 0;
     overflow-y: hidden;
     box-sizing: border-box;
-    transition: 3s ease margin-top, opacity 3s ease;
-    /* max-height: 0 !important; */
+    margin-top: -20px;
   }
   & > li:not(:last-child) {
     margin-bottom: 17px;
@@ -32,19 +31,25 @@ export const StyledTable = styled.table`
     font-size: 17px;
     letter-spacing: 0.03em;
     font-weight: 600;
+    transition: margin-top 0.7s ease, opacity 1s ease,
+      background-color 0.1s ease;
   }
   .table-header > div {
     opacity: 0.8;
   }
   .table-row {
-    background-color: #ffffff;
     box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
     background-color: ${({ theme }) => theme.card.background};
     box-shadow: ${({ theme }) => theme.card.boxShadow};
     font-weight: 600;
     font-size: 17px;
+    transition: margin-top 0.7s ease, opacity 1s ease,
+      background-color 0.1s ease;
   }
-  & > li > div > div:nth-child(1) {
+  & > li > div > div {
+    flex: 1;
+  }
+  /* & > li > div > div:nth-child(1) {
     flex-basis: 20%;
   }
   & > li > div > div:nth-child(2) {
@@ -55,5 +60,5 @@ export const StyledTable = styled.table`
   }
   & > li > div > div:nth-child(4) {
     flex-basis: 25%;
-  }
+  } */
 `;

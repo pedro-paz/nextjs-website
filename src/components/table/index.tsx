@@ -1,29 +1,57 @@
 import React, { CSSProperties, useEffect, useRef } from "react";
 import { StyledTable } from "./styles";
 
-interface TableProps {
-  style: CSSProperties;
+interface ColumnConfiguration<T> {
+  header?: string;
+  propName?: keyof T;
+  width?: string | number;
+  resolveWith?: (data: T) => JSX.Element | string;
 }
 
-export const Table: React.FC<TableProps> = ({ children, style }) => {
+interface TableProps<T> {
+  style: CSSProperties;
+  columns: ColumnConfiguration<T>[];
+  data: T[];
+}
+
+export const Table = <T extends {}>({
+  style,
+  data,
+  columns,
+}: TableProps<T>) => {
   const tableContainer = useRef<HTMLElement>();
+
   const showRow = (element: HTMLElement) => {
     if (!element) return;
     element.style.opacity = "1";
     element.style.marginTop = "0";
-    setTimeout(() => showRow(element.nextElementSibling as HTMLElement), 200);
+    setTimeout(() => showRow(element.nextElementSibling as HTMLElement), 100);
   };
 
   useEffect(() => {
-    tableContainer.current.childNodes.forEach((x) => {
-      const element = x as HTMLElement;
-      element.style.marginTop = `-100px`;
-    });
     showRow(tableContainer.current.childNodes[0] as HTMLElement);
   }, []);
   return (
     <StyledTable style={style} ref={tableContainer}>
-      {children}
+      <li className="table-header">
+        <div>
+          {columns.map((x) => (
+            <div>{x.header || x.propName}</div>
+          ))}
+        </div>
+      </li>
+      {data?.map((row) => (
+        <li className="table-row">
+          <div>
+            {columns.map((column) => (
+              <div style={{ width: column.width }}>
+                {(column.resolveWith && column.resolveWith(row)) ||
+                  row[column.propName]}
+              </div>
+            ))}
+          </div>
+        </li>
+      ))}
     </StyledTable>
   );
 };
