@@ -28,8 +28,9 @@ export const StyledTable = styled.table`
   .table-header {
     background-color: ${({ theme }) => theme.card.background};
     box-shadow: ${({ theme }) => theme.card.boxShadow};
-    font-size: 17px;
+
     letter-spacing: 0.03em;
+    font-weight: 700;
     font-weight: 600;
     transition: margin-top 0.7s ease, opacity 1s ease,
       background-color 0.1s ease;
@@ -42,7 +43,7 @@ export const StyledTable = styled.table`
     background-color: ${({ theme }) => theme.card.background};
     box-shadow: ${({ theme }) => theme.card.boxShadow};
     font-weight: 600;
-    font-size: 17px;
+
     transition: margin-top 0.7s ease, opacity 1s ease,
       background-color 0.1s ease;
   }

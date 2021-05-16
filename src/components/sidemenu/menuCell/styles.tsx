@@ -33,15 +33,10 @@ export const ContainerMenuCell = styled.div<ContainerMenuCellProps>`
         display: inline-block;
         z-index: 1;
         position: relative;
-      }
-
-      & svg:last-child {
-        position: absolute;
-        left: 0;
-        filter: blur(6px) contrast(1);
-        z-index: 0;
-        transition: opacity 0.5s ease;
-        opacity: ${({ isActive }) => (isActive ? 1 : 0)};
+        filter: ${({ isActive, theme }) =>
+          isActive
+            ? `drop-shadow(0px 0px 5px ${theme.sideMenu.iconGlow})`
+            : ""};
       }
     }
 

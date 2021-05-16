@@ -25,6 +25,7 @@ export const darkTheme: ITheme = {
     background: "#00000087",
   },
   sideMenu: {
+    iconGlow: "white",
     boxShadow: "0 0 40px 3px #00000073",
     background: "#00000066",
     color: "white",

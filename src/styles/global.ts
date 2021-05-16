@@ -8,6 +8,7 @@ export default createGlobalStyle`
         color: ${({ theme }) => theme.fontColor};
         font-family: Nunito;                
         position: fixed;
+        font-size:14px;
         margin: 0;        
         bottom: 0;
         right: 0;

@@ -2,7 +2,7 @@ import ITheme from "../../interfaces/ITheme";
 
 export const lightTheme: ITheme = {
   background: "#ebebf5",
-  fontColor: "#5a5a5a",
+  fontColor: "#565656",
   gradient: ["#c2c8ee", "#98a3e9", "#7080e2"],
   boxShadow: "2px 2px 44px 0px #a0a0a073",
   lightColor: "#0000001a",
@@ -28,6 +28,7 @@ export const lightTheme: ITheme = {
     boxShadow: "2px 2px 8px 0px #a0a0a073",
     background: "#ffffff40",
     color: "black",
+    iconGlow: "#e1e3f5",
     selectedCell: {
       color: "#7080e2",
     },
@@ -36,7 +37,7 @@ export const lightTheme: ITheme = {
     },
     cellIndicator: {
       background: "#7080e2",
-      boxShadow: "0 0 4px 2px #d4d9f9",
+      boxShadow: "0 0 4px 2px #e1e3f5",
     },
   },
 };

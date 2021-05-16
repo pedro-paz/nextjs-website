@@ -59,25 +59,11 @@ const MenuCell: React.FC<MenuItemProps> = ({
         <main style={{ paddingLeft: `${marginLeft}px` }}>
           <section>
             <Icon />
-            <Icon />
           </section>
 
           <span>{Name}</span>
         </main>
       </ContainerMenuCell>
-
-      {SubMenu && (
-        <ContainerSubMenu isExpanded={isExpanded}>
-          {SubMenu.map((menu, i) => (
-            <MenuCell
-              key={menu.Url || i}
-              {...menu}
-              SubMenu={menu.SubMenu}
-              marginLeft={marginLeft + 10}
-            />
-          ))}
-        </ContainerSubMenu>
-      )}
     </>
   );
 };

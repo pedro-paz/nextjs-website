@@ -11,6 +11,7 @@ interface ThemedSideMenu {
   selectedCell: ThemedElement;
   notSelectedCell: ThemedElement;
   cellIndicator: ThemedElement;
+  iconGlow: string;
 }
 
 interface ThemeCard extends ThemedElement {
